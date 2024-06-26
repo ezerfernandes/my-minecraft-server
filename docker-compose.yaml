@@ -1,0 +1,25 @@
+services:
+  mc_random:
+    image: itzg/minecraft-server
+    volumes:
+      - mc_random:/data
+      - /home/mc_random/plugins:/plugins
+      - /home/mc_random/mods:/mods
+    ports:
+      - 25568:25565
+    environment:
+      EULA: "TRUE"
+      TYPE: "PAPER"
+      VIEW_DISTANCE: 16
+      INIT_MEMORY: 4G
+      MAX_MEMORY: 6G
+      OPS: "Chekotay"
+      SEED: 5255823060500105168
+      ENABLE_WHITELIST: "TRUE"
+      ENFORCE_WHITELIST: "TRUE"
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+volumes:
+  mc_random:
+    external: true
